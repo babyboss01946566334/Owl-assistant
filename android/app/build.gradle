@@ -24,7 +24,7 @@ android {
 
     defaultConfig {
         // এই applicationId অবশ্যই আপনার google-services.json ফাইলের package_name-এর সাথে মিলতে হবে।
-        applicationId "com.shifat.socialposter"
+        applicationId "social-poster-assistant"
         
         // আপনার প্রোজেক্টের জন্য 최소 এবং টার্গেট SDK ভার্সন।
         minSdkVersion 21
