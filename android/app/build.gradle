@@ -1,0 +1,66 @@
+// এই প্লাগইনটি সবার উপরে রাখতে হবে। এটি google-services.json ফাইলটিকে প্রোজেক্টের সাথে যুক্ত করে।
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    // এই namespace আপনার অ্যাপের package name-এর সাথে মিলতে হবে।
+    namespace "com.shifat.socialposter"
+    compileSdkVersion 34 // আপনি Flutter-এর নতুন ভার্সন অনুযায়ী এটি পরিবর্তন করতে পারেন
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // এই applicationId অবশ্যই আপনার google-services.json ফাইলের package_name-এর সাথে মিলতে হবে।
+        applicationId "com.shifat.socialposter"
+        
+        // আপনার প্রোজেক্টের জন্য 최소 এবং টার্গেট SDK ভার্সন।
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
+        
+        // Firebase এবং অন্যান্য বড় লাইব্রেরির জন্য এটি যোগ করা ভালো।
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            // রিলিজ বিল্ডের জন্য কোড ছোট এবং অপটিমাইজ করার কনফিগারেশন।
+            signingConfig signingConfigs.debug // প্রোডাকশনের জন্য এখানে আপনার রিলিজ কী যোগ করতে হবে।
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    // Firebase Bill of Materials (BOM)
+    // এটি যোগ করলে আপনাকে প্রতিটি Firebase লাইব্রেরির জন্য আলাদা করে ভার্সন দিতে হবে না।
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
+
+    // আপনার প্রয়োজনীয় Firebase সার্ভিসগুলো এখানে যোগ করুন।
+    // উদাহরণ হিসেবে অ্যানালিটিক্স যোগ করা হলো।
+    implementation 'com.google.firebase:firebase-analytics'
+    
+    // অন্যান্য প্রয়োজনীয় লাইব্রেরি এখানে যোগ করতে পারেন।
+}
