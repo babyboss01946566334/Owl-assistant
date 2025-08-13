@@ -1,0 +1,37 @@
+name: owl_assistant
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0' # আপনার Flutter SDK ভার্সন অনুযায়ী এটি পরিবর্তন হতে পারে
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Firebase এবং অন্যান্য প্রয়োজনীয় প্যাকেজগুলো যোগ করুন
+  firebase_core: ^2.15.1 # Firebase সংযোগের জন্য
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  # অ্যাপ আইকন জেনারেট করার জন্য এই প্যাকেজটি যোগ করুন
+  flutter_launcher_icons: "^0.13.1"
+  flutter_lints: ^2.0.0
+
+# অ্যাপ আইকন কনফিগারেশন
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png" # আপনার লোগো ফাইলের পাথ
+  min_sdk_android: 21 # optional
+
+flutter:
+  uses-material-design: true
+
+  # এখানে আপনার অ্যাসেট ফোল্ডারটি ঘোষণা করুন
+  assets:
+    - assets/images/
